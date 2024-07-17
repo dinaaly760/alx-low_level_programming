@@ -1,17 +1,30 @@
 #include "lists.h"
+
 /**
- * dlistint_len - Return number of elements in dll
- * @h: Pointer to struct of ddl
- * Return: The amount of elements in dll
+ * dlistint_len - returns the number of elements in
+ * a double linked list
+ *
+ * @h: head of the list
+ * Return: the number of nodes
+ * Author: @kamalinux
  */
 size_t dlistint_len(const dlistint_t *h)
 {
-	int count_node = 0;
+	int count;
+
+	count = 0;
+
+	if (h == NULL)
+		return (count);
+
+	while (h->prev != NULL)
+		h = h->prev;
 
 	while (h != NULL)
 	{
+		count++;
 		h = h->next;
-		count_node++;
 	}
-	return (count_node);
+
+	return (count);
 }
